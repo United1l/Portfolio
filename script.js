@@ -33,15 +33,12 @@ function getPositon(elem) {
 
 document.body.addEventListener('pointermove', (e) => { 
     let parentPos = getPositon(mouseGradient);
-    let xPosition = e.clientX - parentPos.x - (mouseGradient.offsetWidth / 2);
-    let yPosition = e.clientY - parentPos.y - (mouseGradient.offsetHeight / 2);
+    let xPosition = e.offsetX - (mouseGradient.offsetWidth / 2);
+    let yPosition = e.offsetY - (mouseGradient.offsetHeight / 2);
   
     let translate3dValue = "translate3d(" + xPosition + "px," + yPosition + "px, 0)";
     mouseGradient.style.transform = translate3dValue;
     mouseGradient.style.zIndex = -1000;
-
-    let randomColor = randomRGB();
-    mouseGradient.setAttribute('background-image', 'radial-gradient(" + randomColor + "," + randomColor + "," + randomColor + ")')
   }, false)
   
 
@@ -68,3 +65,9 @@ switchElement.addEventListener('click', () => {
     }
 })
 
+// links transition
+let i = 0;
+while(Links[i].onmouseover) {
+    Links[i].style.transform = "translateY(-10px)";
+    i++;
+}
