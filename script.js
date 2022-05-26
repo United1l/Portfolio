@@ -65,9 +65,6 @@ switchElement.addEventListener('click', () => {
     }
 })
 
-// links transition
-let i = 0;
-while(Links[i].onmouseover) {
+Links[i].addEventListener('mouseover', () => {
     Links[i].style.transform = "translateY(-10px)";
-    i++;
-}
+})
