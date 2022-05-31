@@ -1,4 +1,4 @@
-// Getting and storing the elements from the page
+// Getting and storing the elements from the HTML
 
 const switchElement = document.querySelector('.switch');
 const flickerElement = document.querySelector('.flicker');
@@ -11,7 +11,11 @@ const mainText = document.querySelector('.content-1');
 const mouseGradient = window.getComputedStyle(document.querySelector('.mouse-gradient'));
 
 
-//configuration for the mouse gradient
+/* This is the configuration for the color gradient moving
+with the mouse pointer.
+There's a random color generator function synced to output 
+different colors with each pointer movement event.
+*/
 
 function randomRGB() {
     return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)},0.4)`;
