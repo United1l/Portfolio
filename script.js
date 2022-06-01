@@ -46,7 +46,10 @@ document.body.addEventListener('pointermove', (e) => {
   }, false)
   
 
-//configuration for darkmode
+/*Toggle for light and dark mode
+When the switch is clicked, the flicker transitions to the right.
+The body's background and links change color.
+ */
 
 switchElement.addEventListener('click', () => {
     document.body.classList.toggle('dark');
