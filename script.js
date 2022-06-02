@@ -6,6 +6,8 @@ const nav = document.querySelector('.nav');
 const Links = nav.querySelectorAll('p');
 const tagLine = document.querySelector('#tag-line');
 const mainText = document.querySelector('.content-1');
+const heroName = document.querySelector('#hero-name');
+const menuIcon = document.querySelector('#menu-icon');
 
 
 const mouseGradient = window.getComputedStyle(document.querySelector('.mouse-gradient'));
@@ -42,13 +44,13 @@ document.body.addEventListener('pointermove', (e) => {
   
     let translate3dValue = "translate3d(" + xPosition + "px," + yPosition + "px, 0)";
     mouseGradient.style.transform = translate3dValue;
-    mouseGradient.style.zIndex = -1000;
+    mouseGradient.style.zIndex = 1000;
   }, false)
   
 
-/*Toggle for light and dark mode
+/*Toggle for light and dark mode.
 When the switch is clicked, the flicker transitions to the right.
-The body's background and links change color.
+The body's background and other necessary elements change.
  */
 
 switchElement.addEventListener('click', () => {
@@ -57,16 +59,14 @@ switchElement.addEventListener('click', () => {
         flickerElement.style.transform = "translateX(40px)";
         flickerElement.style.zIndex = "1";
         flickerElement.style.transition = "0.3s";
-        for(let i = 0; i < Links.length; i++) {
-            Links[i].style.color = "white";
-        };
+        heroName.style.color = "white";
+        menuIcon.style.backgroundColor = "white";
         mainText.style.color = "white";
-        tagLine.style.textDecoration = "underline white 10px";
+        tagLine.style.textDecoration = "underline white 6px";
     } else {
         flickerElement.style.transform = "";
-        for(let i = 0; i < Links.length; i++) {
-            Links[i].style.color = "";
-        };
+        heroName.style.color = "";
+        menuIcon.style.color = "";
         mainText.style.color = "";
         tagLine.style.textDecoration = "";
     }
