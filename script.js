@@ -10,11 +10,11 @@ const heroName = document.querySelector('#hero-name');
 const menuIcon = document.querySelector('#menu-icon');
 
 
-const mouseGradient = window.getComputedStyle(document.querySelector('.mouse-gradient'));
+const mouseGradient = document.querySelector('#mouse-gradient');
 
 
-/* This is the configuration for the color gradient moving
-with the mouse pointer.
+/* This is the configuration for the color gradient changing
+with each pointer movement.
 There's a random color generator function synced to output 
 different colors with each pointer movement event.
 */
@@ -37,10 +37,16 @@ function getPositon(elem) {
     return {x: positionX, y: positionY};
 }
 
+/* Pointer movement event and its intented effect with each
+movement.
+The effects are with each movement, the mouse gradient follows
+the pointer to its coordinates position and its color changes 
+to sync each movement.
+ */
 document.body.addEventListener('pointermove', (e) => { 
     let parentPos = getPositon(mouseGradient);
-    let xPosition = e.offsetX - (mouseGradient.offsetWidth / 2);
-    let yPosition = e.offsetY - (mouseGradient.offsetHeight / 2);
+    let xPosition = e.clientX - parentPos.x - (mouseGradient.offsetWidth / 2);
+    let yPosition = e.clientY - parentPos.y - (mouseGradient.offsetHeight / 2);
   
     let translate3dValue = "translate3d(" + xPosition + "px," + yPosition + "px, 0)";
     mouseGradient.style.transform = translate3dValue;
@@ -60,18 +66,14 @@ switchElement.addEventListener('click', () => {
         flickerElement.style.zIndex = "1";
         flickerElement.style.transition = "0.3s";
         heroName.style.color = "white";
-        menuIcon.style.backgroundColor = "white";
+        menuIcon.style.stroke = "rgb(255,255,255)";
         mainText.style.color = "white";
         tagLine.style.textDecoration = "underline white 6px";
     } else {
         flickerElement.style.transform = "";
         heroName.style.color = "";
-        menuIcon.style.color = "";
+        menuIcon.style.stroke = "rgb(0,0,0)";
         mainText.style.color = "";
         tagLine.style.textDecoration = "";
     }
-})
-
-Links[i].addEventListener('mouseover', () => {
-    Links[i].style.transform = "translateY(-10px)";
 })
