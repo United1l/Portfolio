@@ -50,7 +50,7 @@ document.body.addEventListener('pointermove', (e) => {
   
     let translate3dValue = "translate3d(" + xPosition + "px," + yPosition + "px, 0)";
     mouseGradient.style.transform = translate3dValue;
-    mouseGradient.style.zIndex = 1000;
+    mouseGradient.style.zIndex = -1000;
   }, false)
   
 
