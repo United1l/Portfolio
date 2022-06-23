@@ -8,13 +8,10 @@ const tagLine = document.querySelector('#tag-line');
 const mainText = document.querySelector('.content-1');
 const heroName = document.querySelector('#hero-name');
 const menuIcon = document.querySelector('#menu-icon');
-
-
 const mouseGradient = document.querySelector('#mouse-gradient');
 
 
-/* This is the configuration for the color gradient changing
-with each pointer movement.
+/*
 There's a random color generator function synced to output 
 different colors with each pointer movement event.
 */
@@ -23,6 +20,12 @@ function randomRGB() {
     return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)},0.4)`;
 }
 
+/* Pointer movement event and its intented effect with each
+movement.
+The effects are with each movement, the mouse gradient follows
+the pointer to its coordinates position and its color changes 
+to sync each movement.
+ */
 function getPositon(elem) {
     let positionX = 0;
     let positionY = 0;
@@ -37,12 +40,6 @@ function getPositon(elem) {
     return {x: positionX, y: positionY};
 }
 
-/* Pointer movement event and its intented effect with each
-movement.
-The effects are with each movement, the mouse gradient follows
-the pointer to its coordinates position and its color changes 
-to sync each movement.
- */
 document.body.addEventListener('pointermove', (e) => { 
     let parentPos = getPositon(mouseGradient);
     let xPosition = e.clientX - parentPos.x - (mouseGradient.offsetWidth / 2);
@@ -76,4 +73,12 @@ switchElement.addEventListener('click', () => {
         mainText.style.color = "";
         tagLine.style.textDecoration = "";
     }
+})
+
+/*
+Media query events for different screens.
+ */
+
+window.matchMedia('(min-width: 800px)').addEventListener(() => {
+    menuIcon.remove();
 })
