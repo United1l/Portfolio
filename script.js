@@ -79,6 +79,12 @@ switchElement.addEventListener('click', () => {
 Media query events for different screens.
  */
 
-window.matchMedia('(min-width: 800px)').addEventListener(() => {
+if (window.matchMedia('(min-width: 800px)').matches) {
     menuIcon.remove();
-})
+    const work = document.createTextNode("work");
+    const about = document.createTextNode("about");
+    const contact = document.createTextNode("contact");
+    nav.append(work,about,contact);
+} else {
+    nav.appendChild('menuIcon');
+}
