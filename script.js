@@ -3,7 +3,10 @@
 const switchElement = document.querySelector('.switch');
 const flickerElement = document.querySelector('.flicker');
 const nav = document.querySelector('.nav');
-const Links = nav.querySelectorAll('p');
+const work = document.createTextNode("work");
+const about = document.createTextNode("about");
+const contact = document.createTextNode("contact");
+const links = [work, about, contact];
 const tagLine = document.querySelector('#tag-line');
 const mainText = document.querySelector('.content-1');
 const heroName = document.querySelector('#hero-name');
@@ -79,12 +82,10 @@ switchElement.addEventListener('click', () => {
 Media query events for different screens.
  */
 
-if (window.matchMedia('(min-width: 800px)').matches) {
-    menuIcon.remove();
-    const work = document.createTextNode("work");
-    const about = document.createTextNode("about");
-    const contact = document.createTextNode("contact");
-    nav.append(work,about,contact);
+if (window.matchMedia('(min-width: 800px)').matches && window.matchMedia('(min-height: 960px)').matches) {
+    nav.append(links);
+    menuIcon.style.display = "none";
 } else {
-    nav.appendChild('menuIcon');
+    links.style.display = "none";
+    menuIcon.style.display = ""; 
 }
