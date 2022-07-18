@@ -1,8 +1,15 @@
-* {
+:root{
+    --position: absolute;
+    --left: 2%;
+}
+
+
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -11,6 +18,7 @@
 }
 
 body{
+    font-family: 'Poppins', sans-serif;
     height: 100vh;
     width: 100%;
     padding: 2%;
@@ -87,118 +95,4 @@ header{
     display: inline;
 }
 
-:root{
-    --position: absolute;
-    --left: 2%;
-}
 
-@media (min-width: 480px) and (min-height: 640px) {
-    body{
-        grid-template-columns: repeat(3, 160px);
-    }
-    header{
-        grid-column: 1 / 4;
-    }
-    .main-content{
-        grid-column: 1 / 4;
-        font-size: 14px;
-    }
-    .toggle-block{
-        grid-row: 4;
-    }   
-}
-
-@media (min-width: 640px) and (min-height: 800px) {
-    body{
-        grid-template-columns: repeat(4, 160px);
-    }
-    header{
-        grid-column: 1 / 5;
-    }
-    .main-content{
-        grid-column: 1 / 5;
-        font-size: 16px;
-    }
-    .toggle-block{
-        grid-row: 5;
-    } 
-}
-
-
-@media (min-width: 800px) and (min-height: 960px) {
-    body{
-        grid-template-columns: repeat(5, 160px);
-    }
-    header{
-        grid-column: 1 / 6;
-    }
-    .main-content{
-        grid-column: 1 / 6;
-        font-size: 18px;
-    }
-
-    #hero-name{
-        position: var(--position);
-        left: var(--left);
-    }
-    .switch{
-        width: 144px;
-        height: 92px;
-        border-radius: 50px;
-    }
-    .flicker{
-        width: 72px;
-        height: 72px;
-    }
-}
-
-@media (min-width: 960px) and (min-height: 1120px) {
-    body{
-        grid-template-columns: repeat(6, 160px);
-    }
-    header{
-        grid-column: 1 / 7;
-    }
-    .main-content{
-        grid-column: 1 / 7;
-        font-size: 20px;
-    }
-
-    .switch{
-        width: 184px;
-        height: 112px;
-        border-radius: 60px;
-        border: 8px solid #CAC9CC;
-    }
-    .flicker{
-        width: 92px;
-        height: 92px;
-        top: 2px;
-    }
-}
-
-@media (min-width: 1120px) and (min-height: 1280px) {
-    body{
-        grid-template-columns: repeat(7, 160px);
-    }
-    header{
-        grid-column: 1 / 8;
-    }
-    .main-content{
-        grid-column: 1 / 8;
-        font-size: 26px;
-    }
-}
-
-@media (min-width: 1280px) and (min-height: 1440px) {
-    body{
-        grid-template-columns: repeat(8, 160px);
-    }
-    header{
-        grid-column: 1 / 9;
-    }
-    .main-content{
-        grid-column: 1 / 9;
-        font-size: 32px;
-    }
-}
