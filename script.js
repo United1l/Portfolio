@@ -1,16 +1,16 @@
 // Getting and storing the elements from the HTML
 
+const heroName = document.querySelector('#hero-name');
+const nav = document.querySelector('.nav');
+const menuIcon = document.querySelector('#menu-icon');
+const links = document.querySelector('.links');
+const work = document.querySelector('work-link');
+const about = document.querySelector('about-link');
+const contact = document.querySelector('contact-link');
+const mainText = document.querySelector('.content-1');
+const tagLine = document.querySelector('#tag-line');
 const switchElement = document.querySelector('.switch');
 const flickerElement = document.querySelector('.flicker');
-const nav = document.querySelector('.nav');
-const work = document.createTextNode("work");
-const about = document.createTextNode("about");
-const contact = document.createTextNode("contact");
-const links = [work, about, contact];
-const tagLine = document.querySelector('#tag-line');
-const mainText = document.querySelector('.content-1');
-const heroName = document.querySelector('#hero-name');
-const menuIcon = document.querySelector('#menu-icon');
 const mouseGradient = document.querySelector('#mouse-gradient');
 
 
@@ -65,27 +65,15 @@ switchElement.addEventListener('click', () => {
         flickerElement.style.transform = "translateX(40px)";
         flickerElement.style.zIndex = "1";
         flickerElement.style.transition = "0.3s";
-        heroName.style.color = "white";
         menuIcon.style.stroke = "rgb(255,255,255)";
+        links.style.color = "white";
         mainText.style.color = "white";
         tagLine.style.textDecoration = "underline white 6px";
     } else {
         flickerElement.style.transform = "";
-        heroName.style.color = "";
         menuIcon.style.stroke = "rgb(0,0,0)";
+        links.style.color = "";
         mainText.style.color = "";
         tagLine.style.textDecoration = "";
     }
 })
-
-/*
-Media query events for different screens.
- */
-
-if (window.matchMedia('(min-width: 800px)').matches && window.matchMedia('(min-height: 960px)').matches) {
-    nav.append(links);
-    menuIcon.style.display = "none";
-} else {
-    links.style.display = "none";
-    menuIcon.style.display = ""; 
-}
