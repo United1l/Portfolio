@@ -3,19 +3,67 @@
 const heroName = document.querySelector('#hero-name');
 const nav = document.querySelector('.nav');
 const menuIcon = document.querySelector('#menu-icon');
-const links = document.querySelector('.links');
+const linksBox = document.querySelector('.links-box');
+
+const links = document.querySelectorAll('.link');
 const work = document.querySelector('work-link');
 const about = document.querySelector('about-link');
 const contact = document.querySelector('contact-link');
+
+
 const mainText = document.querySelector('.content-1');
 const tagLine = document.querySelector('#tag-line');
+
+
 const switchElement = document.querySelector('.switch');
 const flickerElement = document.querySelector('.flicker');
 const mouseGradient = document.querySelector('#mouse-gradient');
 
 
-/*
-There's a random color generator function synced to output 
+
+/* Click event for the menu icon
+ */
+menuIcon.addEventListener('click', () => {
+    linksBox.classList.toggle('open');
+    if (linksBox.classList.contains('open') || document.body.classList.contains('dark')) {
+        menuIcon.style.stroke = "rgb(255,255,255)";
+    } else {
+        menuIcon.style.stroke = "";
+    }
+})
+
+
+
+/* Toggle for light and dark mode.
+When the switch is clicked, the flicker transitions to the right.
+The body's background and other necessary elements change.
+ */
+
+switchElement.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+        flickerElement.style.transform = "translateX(40px)";
+        flickerElement.style.zIndex = "1";
+        flickerElement.style.transition = "0.3s";
+        menuIcon.style.stroke = "rgb(255,255,255)";
+        for(let i = 0; i < links.length; i++) {
+            links[i].style.color = "white";
+        };
+        mainText.style.color = "white";
+        tagLine.style.textDecoration = "underline white 6px";
+    } else {
+        flickerElement.style.transform = "";
+        menuIcon.style.stroke = "rgb(0,0,0)";
+        for(let i = 0; i < links.length; i++) {
+            links[i].style.color = "";
+        };
+        mainText.style.color = "";
+        tagLine.style.textDecoration = "";
+    }
+})
+
+
+/* This a random color generator function synced to output 
 different colors with each pointer movement event.
 */
 
@@ -53,27 +101,3 @@ document.body.addEventListener('pointermove', (e) => {
     mouseGradient.style.zIndex = -1000;
   }, false)
   
-
-/*Toggle for light and dark mode.
-When the switch is clicked, the flicker transitions to the right.
-The body's background and other necessary elements change.
- */
-
-switchElement.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    if (document.body.classList.contains('dark')) {
-        flickerElement.style.transform = "translateX(40px)";
-        flickerElement.style.zIndex = "1";
-        flickerElement.style.transition = "0.3s";
-        menuIcon.style.stroke = "rgb(255,255,255)";
-        links.style.color = "white";
-        mainText.style.color = "white";
-        tagLine.style.textDecoration = "underline white 6px";
-    } else {
-        flickerElement.style.transform = "";
-        menuIcon.style.stroke = "rgb(0,0,0)";
-        links.style.color = "";
-        mainText.style.color = "";
-        tagLine.style.textDecoration = "";
-    }
-})
