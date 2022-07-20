@@ -1,6 +1,5 @@
 :root{
     --position: absolute;
-    --left: 2%;
 }
 
 
@@ -13,9 +12,9 @@
 
 
 body{
+    position: relative;
     height: 100vh;
     width: 100vw;
-    padding: 2%;
     display: flex;
     flex-direction: column;
 }
@@ -31,9 +30,11 @@ header{
     max-width: 100vw;
     flex: 1;
     display: flex;
+    align-items: flex-start;
 }
 
 #hero-name{
+    margin: 2%;
     flex: 1;
     color: #DDC4DD;
     font-size: clamp(20px, 3vw, 45px);
@@ -41,16 +42,41 @@ header{
 
 .nav{
     flex: 1;
+    margin: 2%;
 }
 
 #menu-icon{
-    position: absolute;
-    top: 2.5%;
+    position: var(--position);
+    top: 2%;
     right: 5%;
     cursor: pointer;
+    z-index: 1000;
 }
 
-.links{
+.links-box{
+    display: none;
+    clip-path: circle(100px at 90% -10%);
+}
+
+.links-box.open{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: #DDC4DD;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    clip-path: circle(1000px at 90% -10%);
+    transition: all 2s ease-in;
+    z-index: 100;
+}
+
+.menu-link{
+    color: #ffff;
+}
+
+.main-links{
     width: 100%;
     display: none;
     pointer-events: none;
@@ -58,18 +84,27 @@ header{
     font-weight: 500;
 }
 
-.links li{
+.main-links li{
     list-style: none;
 }
 
-.links a{
+.menu-link, .main-links a{
+    pointer-events: all;
     text-decoration: none;
+}
+
+.main-links a{
     color: #495057;
 }
 
+.main-links li:hover{
+    transform: translateY(-10px);
+    transition: all 0.3S587s ease-in;
+}
 
 /*Styling of the main content*/
 main{
+    margin: 2%;
     flex: 1;
     display: flex;
     flex-direction: row;
@@ -88,6 +123,7 @@ main{
 
 /*Bottom section of the webpage*/
 .toggle{
+    margin: 2%;
     flex: 1;
 }
 
@@ -99,6 +135,7 @@ main{
     border-radius: 40px;
     background-color: #495057;
     position: fixed;
+    cursor: pointer;
 }
 
 .flicker {
@@ -106,7 +143,7 @@ main{
     height: 52px;
     border-radius: 50%;
     background-color: #C4C4C4;
-    position: absolute;
+    position: var(--position);
     left: 4px;
     top: 4px;
 }
@@ -120,15 +157,20 @@ main{
 }
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
     #menu-icon{
         display: none;
     }
 
-    .links{
+    .main-links{
         display: flex;
         justify-content: space-around;
         pointer-events: all;
+    }
+
+    .links-box2{
+        display: none;
+        pointer-events: none;
     }
 }
 
