@@ -54,7 +54,6 @@ header{
 }
 
 .links-box{
-    display: none;
     clip-path: circle(100px at 90% -10%);
 }
 
@@ -67,13 +66,15 @@ header{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    clip-path: circle(1000px at 90% -10%);
-    transition: all 2s ease-in;
+    clip-path: circle(1000px at 70% -10%);
+    transition: all 1s cubic-bezier(.62,.23,.16,.96);
     z-index: 100;
 }
 
 .menu-link{
     color: #ffff;
+    font-size: clamp(12px, 5vw, 24px);
+    display: none;
 }
 
 .main-links{
