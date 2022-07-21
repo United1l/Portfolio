@@ -4,6 +4,7 @@ const heroName = document.querySelector('#hero-name');
 const nav = document.querySelector('.nav');
 const menuIcon = document.querySelector('#menu-icon');
 const linksBox = document.querySelector('.links-box');
+const menuLink = document.querySelectorAll('.menu-link');
 
 const links = document.querySelectorAll('.link');
 const work = document.querySelector('work-link');
@@ -27,10 +28,12 @@ menuIcon.addEventListener('click', () => {
     linksBox.classList.toggle('open');
     if (linksBox.classList.contains('open') || document.body.classList.contains('dark')) {
         menuIcon.style.stroke = "rgb(255,255,255)";
-    } else {
-        menuIcon.style.stroke = "";
-    }
-})
+        menuLink.forEach(link => link.style.display = "block");
+        } else {
+            menuIcon.style.stroke = "";
+            menuLink.forEach(link => link.style.display = "none");
+        }
+    })
 
 
 
@@ -46,17 +49,15 @@ switchElement.addEventListener('click', () => {
         flickerElement.style.zIndex = "1";
         flickerElement.style.transition = "0.3s";
         menuIcon.style.stroke = "rgb(255,255,255)";
-        for(let i = 0; i < links.length; i++) {
-            links[i].style.color = "white";
-        };
+        menuLink.forEach(link => link.style.display = "none");
+        links.forEach(liink => liink.style.color = "white");
         mainText.style.color = "white";
         tagLine.style.textDecoration = "underline white 6px";
     } else {
         flickerElement.style.transform = "";
         menuIcon.style.stroke = "rgb(0,0,0)";
-        for(let i = 0; i < links.length; i++) {
-            links[i].style.color = "";
-        };
+        menuLink.forEach(link => link.style.display = "");
+        links.forEach(liink => liink.style.color = "white");
         mainText.style.color = "";
         tagLine.style.textDecoration = "";
     }
