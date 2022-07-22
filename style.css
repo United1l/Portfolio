@@ -169,7 +169,7 @@ main{
         pointer-events: all;
     }
 
-    .links-box2{
+    .links-box.open{
         display: none;
         pointer-events: none;
     }

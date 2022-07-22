@@ -29,8 +29,13 @@ menuIcon.addEventListener('click', () => {
     if (linksBox.classList.contains('open') || document.body.classList.contains('dark')) {
         menuIcon.style.stroke = "rgb(255,255,255)";
         menuLink.forEach(link => link.style.display = "block");
-        } else {
+        }
+        else {
             menuIcon.style.stroke = "";
+            menuLink.forEach(link => link.style.display = "none");
+        }
+
+        while((linksBox.classList.contains('open') == false) && document.body.classList.contains('dark')) {
             menuLink.forEach(link => link.style.display = "none");
         }
     })
@@ -49,15 +54,13 @@ switchElement.addEventListener('click', () => {
         flickerElement.style.zIndex = "1";
         flickerElement.style.transition = "0.3s";
         menuIcon.style.stroke = "rgb(255,255,255)";
-        menuLink.forEach(link => link.style.display = "none");
         links.forEach(liink => liink.style.color = "white");
         mainText.style.color = "white";
         tagLine.style.textDecoration = "underline white 6px";
     } else {
         flickerElement.style.transform = "";
         menuIcon.style.stroke = "rgb(0,0,0)";
-        menuLink.forEach(link => link.style.display = "");
-        links.forEach(liink => liink.style.color = "white");
+        links.forEach(liink => liink.style.color = "");
         mainText.style.color = "";
         tagLine.style.textDecoration = "";
     }
